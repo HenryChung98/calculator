@@ -1,4 +1,5 @@
 let calcToggled = false;
+let isBracket = false;
 let numCount = 0;
 let rowCount = 0;
 const buttons = document.querySelectorAll('td');
@@ -9,9 +10,21 @@ const previous = document.getElementById('previous');
 const extendedCalc = document.getElementById('extendedCalc');
 const arrowImgLeft = document.querySelector('.arrowImg.left');
 const arrowImgRight = document.querySelector('.arrowImg.right');
+
+
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
 function cleanNote(){
   previous.innerHTML = '';
+  rowCount = 0;
 }
+
+
 function extend(){
   calcToggled = !calcToggled;
   extendedCalc.style.display = calcToggled ? 'block' : 'none';
@@ -22,8 +35,22 @@ function extend(){
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+function eraseRow(){
+  if (rowCount >= 20){
+    const lines = previous.innerHTML.split('<br>');
 
+    // remove first, second lines
+    lines.splice(0, 2);
+    //unsplit 
+    previous.innerHTML = lines.join('<br>');
+
+    rowCount -= 2;
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  eraseRow();
   buttons.forEach(function (button) {
     button.addEventListener('click', function () {
       const buttonText = button.innerText;
@@ -40,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         secret.value = '';
         clear.innerHTML = 'AC';
         if (previous.innerHTML !== ''){
-        previous.innerHTML += "</br>------------------------------------------------------</br>";
+        previous.innerHTML += "</br>------------------------------------------------------------------------------------------------------</br>";
         rowCount += 2;
       }
       }
@@ -50,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
         secret.value += buttonText;
         previous.innerHTML += buttonText;
         numCount++;
-        if (numCount >= 36){
+
+        if (numCount >= 50){
           previous.innerHTML += "</br>";
           rowCount++;
           numCount = 0;
@@ -73,31 +101,55 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       else if (buttonText === '+'){
-        output.value = '';
+        if (isBracket === true) {
+          output.value += '+';
+          previous.innerHTML += "+";
+        }
+        else{
+          output.value = '';
+          previous.innerHTML += "</br>+</br>"
+          rowCount += 2;
+        }
         secret.value += '+';
-        previous.innerHTML += "</br>+</br>"
-        rowCount += 2;
       }
 
       else if (buttonText === '-'){
-        output.value = '';
+        if (isBracket === true) {
+          output.value += '-';
+          previous.innerHTML += "-";
+        }
+        else{
+          output.value = '';
+          previous.innerHTML += "</br>-</br>"
+          rowCount += 2;
+        }
         secret.value += '-';
-        previous.innerHTML += "</br>-</br>"
-        rowCount += 2;
       }
 
       else if (buttonText === '×'){
-        output.value = '';
+        if (isBracket === true) {
+          output.value += '×';
+          previous.innerHTML += "×";
+        }
+        else{
+          output.value = '';
+          previous.innerHTML += "</br>×</br>"
+          rowCount += 2;
+        }
         secret.value += '*';
-        previous.innerHTML += "</br>×</br>"
-        rowCount += 2;
       }
 
       else if (buttonText === '÷'){
-        output.value = '';
+        if (isBracket === true) {
+          output.value += '÷';
+          previous.innerHTML += "÷";
+        }
+        else{
+          output.value = '';
+          previous.innerHTML += "</br>÷</br>"
+          rowCount += 2;
+        }
         secret.value += '/';
-        previous.innerHTML += "</br>÷</br>"
-        rowCount += 2;
       }
 
       else if (buttonText === '.'){
@@ -111,19 +163,74 @@ document.addEventListener('DOMContentLoaded', function () {
           output.value = eval(secret.value);
           secret.value = output.value;
           previous.innerHTML += "</br>" + output.value;
-          rowCount += 2;
+          rowCount++;
         } catch (error) {
           secret.value = 'Error';
           output.value = 'Error';
           previous.innerHTML += '</br>Error</br>';
+          rowCount += 2;
         }
       }
 
-      else {
-        secret.value += buttonText;
-        output.value += buttonText;
-        clear.innerHTML = 'C';
+// ------------------------------extend------------------------------ //
+
+      if (buttonText === '|x|'){
+        if (secret.value < 0){
+          output.value *= -1;
+          secret.value *= -1;
+          previous.innerHTML += "</br>" + output.value;
+        }
       }
+
+      else if (buttonText === 'x^2'){
+        output.value = '';
+        secret.value **= 2;
+        previous.innerHTML += "^2"
+      }
+
+      else if (buttonText === 'x^y'){
+
+      }
+
+      else if (buttonText === 'f(x)'){
+
+      }
+      
+
+// -------------might be possible make for keyDown as well...-------------//
+
+      else if (buttonText === 'x!'){
+        secret.value = factorial(secret.value);
+        output.value = secret.value;
+        previous.innerHTML += "</br>" + secret.value;
+      }
+
+      else if (buttonText === 'π'){
+        output.value = 'π';
+        secret.value = '3.1415926535';
+        previous.innerHTML += "π"
+      }
+
+      else if (buttonText === 'e') {
+        output.value = 'e';
+        secret.value = '2.7182818284';
+        previous.innerHTML += "e"
+      }
+
+      else if (buttonText === '('){
+        output.value += '(';
+        secret.value += '(';
+        previous.innerHTML += '(';
+        isBracket = true;
+      }
+
+      else if (buttonText === ')'){
+        output.value += ')';
+        secret.value += ')';
+        previous.innerHTML += ')';
+        isBracket = false;
+      }
+
     });
   });
 });

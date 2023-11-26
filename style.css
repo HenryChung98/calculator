@@ -4,7 +4,7 @@
 }
 
 body{
-  background: rgb(73, 73, 73);
+  background: #626261;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,17 +15,23 @@ body{
   /* display: none; */
 }
 
+
 #extendedCalc{
   display: none;
 }
 
+
 #previous{
   width: 50%;
+  min-width: 545px;
   height: 400px;
-  border: 1px solid black;
-  background-color: wheat;
+  padding: 5px;
+  background-color: rgb(210, 196, 170);
+  background-color: rgb(52, 44, 28);
+  color: white;
   text-align: right;
 }
+
 
 #calcBox {
   display: flex;
@@ -33,11 +39,14 @@ body{
   align-items: center;
   margin: 0;
 }
+table, #extend{
+  position: relative;
+  right: 15px;
+}
 
 table , td, th {
   color: white;
 	border: 1px solid rgb(148, 255, 148);
-	border-collapse: collapse;
   text-align: center;
 }
 td, th {
@@ -45,25 +54,27 @@ td, th {
 	width: 50px;
 	height: 50px;
   transition: .2s;
+  background: #262624;
+  border-radius: 5px;
 }
-th {
-	background: #f0e6cc;
-}
-
 #output{
   height: 48px;
   width: 200px;
   font-size: 25px;
+  margin: 10px;
   text-align: right;
 }
+
 
 #cleanNote img{
   width: 30px;
   height: 30px;
 }
 #extend, #cleanNote{
-  background-color: rgb(73, 73, 73);
+  background-color: #626261;
   transition: .5s;
+  width: 30px;
+  padding: 0;
 }
 .arrowImg{
   width: 30px;
@@ -74,5 +85,5 @@ th {
 }
 
 td:hover, #extend:hover, #cleanNote:hover{
-  opacity: .2;
+  opacity: .5;
 }
