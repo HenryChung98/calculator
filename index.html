@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<body>
+  <input type="text" id="secret">
+  <div id="previous">
+  </div>
+  <button id="cleanNote" onclick="cleanNote()">
+  <img src="icons/clean.png">
+</button>
+  <div id="calcBox">
+  <table id="extendedCalc">
+    <tr>
+      <td colspan="5">
+        <input type="text">
+      </td>
+    </tr>
+    <tbody>
+      <tr>
+        <td id="sinBtn">sin</td>
+        <td id="cosBtn">cos</td>
+        <td id="tanBtn">tan</td>
+        <td id="lnBtn">ln</td>
+        <td id="logBtn">log</td>
+      </tr>
+      <tr>
+        <td id="arcSinBtn">sin^-1</td>
+        <td id="arcCosBtn">cos^-1</td>
+        <td id="arcTanBtn">tan^-1</td>
+        <td id="factorialBtn">x!</td>
+        <td id="eulerBtn">e</td>
+
+      </tr>
+      <tr>
+        <td id="powerBtn">x^2</td>
+        <td id="powerXBtn">x^y</td>
+        <td id="absBtn">|x|</td>
+        <td id="bracketLeftBtn">(</td>
+        <td id="bracketRightBtn">)</td>
+      </tr>
+      <tr>
+        <td id="derivBtn">d/dx</td>
+        <td id="intagBtn">∫</td>
+        <td id="floorBtn">⌈x⌉</td>
+        <td id="celiBtn">⌊x⌋</td>
+        <td id="oneOverXBtn">1/x</td>
+      </tr>
+      <tr>
+        <td id="sqrtBtn">2√x</td>
+        <td id="xrtBtn">y√x</td>
+        <td id="iBtn">i</td>
+        <td id="xBtn">x</td>
+        <td id="fOfXBtn">f(x)</td>
+    
+      </tr>
+    </tbody>
+  </table>
+  <button id="extend" onclick="extend()">
+  <img src="icons/leftArrow.png" class="arrowImg left">
+<img src="icons/rightArrow.png" class="arrowImg right"></button>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="4">
+          <input type="text" id="output">
+        </td>
+      </tr>
+      <tr>
+        <td id="clearBtn">AC</td>
+        <td id="posNegBtn">+/-</td>
+        <td id="percentBtn">%</td>
+        <td id="divBtn">÷</td>
+      </tr>
+      <tr>
+        <td id="btn1">1</td>
+        <td id="btn2">2</td>
+        <td id="btn3">3</td>
+        <td id="multBtn">×</td>
+      </tr>
+      <tr>
+        <td id="btn4">4</td>
+        <td id="btn5">5</td>
+        <td id="btn6">6</td>
+        <td id="subBtn">-</td>
+      </tr>
+      <tr>
+        <td id="btn7">7</td>
+        <td id="btn8">8</td>
+        <td id="btn9">9</td>
+        <td id="addBtn">+</td>
+      </tr>
+      <tr>
+        <td colspan="2">0</td>
+        <td id="dotBtn">.</td>
+        <td id="isBtn">=</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
+<script src="extend.js"></script>
+<script src="keyDown.js"></script>
+</html>
