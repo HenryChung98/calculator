@@ -43,8 +43,8 @@
         <td id="bracketRightBtn">)</td>
       </tr>
       <tr>
-        <td id="derivBtn">d/dx</td>
-        <td id="intagBtn">∫</td>
+        <td id="radBtn">Rad</td>
+        <td id="tenPowBtn">10^x</td>
         <td id="floorBtn">⌈x⌉</td>
         <td id="celiBtn">⌊x⌋</td>
         <td id="oneOverXBtn">1/x</td>
@@ -54,7 +54,7 @@
         <td id="xrtBtn">y√x</td>
         <td id="iBtn">i</td>
         <td id="xBtn">x!</td>
-        <td id="fOfXBtn">f(x)</td>
+        <td id="fOfXBtn" onclick="openPopup()">f(x)</td>
     
       </tr>
     </tbody>
@@ -100,6 +100,12 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div id="funcPopup">
+  <img src="icons/icons8-close-100.png" class="noteCloseIcon" onclick="closePopup('notePopup')">
+  <textarea name="Comments" id="fOfX" cols="30" rows="10"></textarea>
+  <br>
+  <button>Save</button>
 </div>
 </body>
 <link rel="stylesheet" href="style.css">

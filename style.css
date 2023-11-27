@@ -87,3 +87,48 @@ td, th {
 td:hover, #extend:hover, #cleanNote:hover{
   opacity: .5;
 }
+
+
+@keyframes scaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+#funcPopup{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+#funcPopup img{
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  top: 1%;
+  right: 1%;
+  margin: 0;
+}
+#funcPopup textarea{
+  border: 1px solid #ccc;
+}
