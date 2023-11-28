@@ -6,6 +6,7 @@ let numCount = 0;
 let rowCount = 0;
 const buttons = document.querySelectorAll('td');
 const output = document.getElementById('output');
+output.disabled = true;
 const clear = document.getElementById('clearBtn');
 const secret = document.getElementById('secret');
 const previous = document.getElementById('previous');
@@ -16,6 +17,8 @@ const fOfX = document.getElementById("fOfX");
 const popup = document.getElementById('funcPopup');
 const radDeg = document.getElementById('radBtn');
 let funcContainer = '';
+const tempBox = document.getElementById('tempBox');
+
 
 function openPopup() {
   popup.style.zIndex = '2';
@@ -111,13 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
         clear.innerHTML = 'C';
       }
 
-      else if (buttonText === '+/-') {
-        output.value *= -1;
-        secret.value *= -1;
-        previous.innerHTML += "</br>" + output.value;
-        rowCount++;
-      }
-
       else if (buttonText === '%') {
         output.value *= 0.01;
         secret.value *= 0.01;
@@ -183,6 +179,19 @@ document.addEventListener('DOMContentLoaded', function () {
         previous.innerHTML += '.';
       }
 
+      else if (buttonText === 'back'){
+        let secretArray = secret.value.split('');
+        secretArray.pop();
+        let modifiedsecret = secretArray.join('');
+        secret.value = modifiedsecret;
+
+        output.value = secret.value;
+        
+        previous.innerHTML += '</br>' + output.value;
+        rowCount++;
+        console.log(rowCount);
+      }
+
       else if (buttonText === '=') {
         if (isRoot === true) {
           output.value += ')';
@@ -206,7 +215,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // ------------------------------extend------------------------------ //
 
-      if (buttonText === '|x|') {
+      if (buttonText === '+/-') {
+        output.value *= -1;
+        secret.value *= -1;
+        previous.innerHTML += "</br>" + output.value;
+        rowCount++;
+      }
+
+      else if (buttonText === '|x|') {
         if (secret.value < 0) {
           output.value *= -1;
           secret.value *= -1;
@@ -230,6 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       else if (buttonText === 'f(x)') {
         openPopup();
+        let getfunction = fOfX.innerHTML;
+        
         isPopup = true;
       }
 
@@ -372,6 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
         output.value = secret.value;
         previous.innerHTML += '</br>'+ secret.value;
         radDeg.innerHTML = 'Deg';
+        rowCount++;
       }
 
       else if (buttonText === 'Deg'){
@@ -379,7 +398,16 @@ document.addEventListener('DOMContentLoaded', function () {
         output.value = secret.value;
         previous.innerHTML += '</br>'+ secret.value;
         radDeg.innerHTML = 'Rad';
+        rowCount++;
       }
+
     });
   });
 });
+// constructor(real, imaginary) {
+//   this.real = real;
+//   this.imaginary = imaginary;
+// }
+// static sqrtNegativeOne(get) {
+//   return new ComplexNumber(get, 1);
+// }

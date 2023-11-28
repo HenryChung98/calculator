@@ -132,3 +132,9 @@ td:hover, #extend:hover, #cleanNote:hover{
 #funcPopup textarea{
   border: 1px solid #ccc;
 }
+
+#output{
+  margin: auto;
+  background-color: white;
+  color: black;
+}

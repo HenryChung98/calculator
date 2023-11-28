@@ -192,6 +192,20 @@ function handleKeyDown(event) {
       previous.innerHTML += '</br>' + secret.value;
       rowCount++;
     }
+
+    else if (pressedKey === 'Backspace'){
+      let secretArray = secret.value.split('');
+      secretArray.pop();
+      let modifiedsecret = secretArray.join('');
+      secret.value = modifiedsecret;
+
+      output.value = secret.value;
+      
+      previous.innerHTML += '</br>' + output.value;
+      rowCount++;
+      console.log(rowCount);
+    }
+
     else if (pressedKey === 'Enter' || pressedKey === 'Return') {
       if (isRoot === true) {
         output.value += ')';
