@@ -17,7 +17,7 @@ const fOfX = document.getElementById("fOfX");
 const popup = document.getElementById('funcPopup');
 const radDeg = document.getElementById('radBtn');
 let funcContainer = '';
-const tempBox = document.getElementById('tempBox');
+
 
 
 function openPopup() {

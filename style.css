@@ -12,7 +12,7 @@ body{
   align-items: center;
 }
 #secret{
-  /* display: none; */
+  display: none;
 }
 
 
